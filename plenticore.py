@@ -56,21 +56,16 @@ sys.path.insert(1, os.path.join(os.path.dirname(
     __file__), '/opt/victronenergy/dbus-modem'))
 
 # Again not all of these needed this is just duplicating the Victron code.
-
-
 class SystemBus(dbus.bus.BusConnection):
     def __new__(cls):
         return dbus.bus.BusConnection.__new__(cls, dbus.bus.BusConnection.TYPE_SYSTEM)
-
 
 class SessionBus(dbus.bus.BusConnection):
     def __new__(cls):
         return dbus.bus.BusConnection.__new__(cls, dbus.bus.BusConnection.TYPE_SESSION)
 
-
 def dbusconnection():
     return SessionBus() if 'DBUS_SESSION_BUS_ADDRESS' in os.environ else SystemBus()
-
 
 powerAC = 0.0
 currentL1 = 0.0
@@ -83,7 +78,6 @@ powerPV = 0.0
 
 # Have a mainloop, so we can send/receive asynchronous calls to and from dbus
 DBusGMainLoop(set_as_default=True)
-
 
 class kostal_modbusquery:
     def __init__(self):
@@ -134,11 +128,11 @@ class kostal_modbusquery:
         self.Adr110.append("Float")
         self.Adr110.append(0) 
         
-        self.Adr112=[]
-        self.Adr112 =[112]
-        self.Adr112.append("Total home consumption Grid")
-        self.Adr112.append("Float")
-        self.Adr112.append(0) 
+        #self.Adr112=[]
+        #self.Adr112 =[112]
+        #self.Adr112.append("Total home consumption Grid")
+        #self.Adr112.append("Float")
+        #self.Adr112.append(0) 
 
         self.Adr114=[]
         self.Adr114 =[114]
@@ -618,7 +612,7 @@ class kostal_modbusquery:
             self.Adr106[3] = self.ReadFloat(self.Adr106[0])
             self.Adr108[3] = self.ReadFloat(self.Adr108[0])
             self.Adr110[3] = self.ReadFloat(self.Adr110[0])
-            self.Adr112[3] = self.ReadFloat(self.Adr112[0])
+            #self.Adr112[3] = self.ReadFloat(self.Adr112[0])
             self.Adr114[3] = self.ReadFloat(self.Adr114[0])
             self.Adr116[3] = self.ReadFloat(self.Adr116[0])
             self.Adr118[3] = self.ReadFloat(self.Adr118[0])
@@ -652,22 +646,22 @@ class kostal_modbusquery:
             self.Adr216[3] = self.ReadFloat(self.Adr216[0])
             self.Adr218[3] = self.ReadFloat(self.Adr218[0])
             self.Adr220[3] = self.ReadFloat(self.Adr220[0])
-            self.Adr222[3] = self.ReadFloat(self.Adr222[0])
-            self.Adr224[3] = self.ReadFloat(self.Adr224[0])
+            #self.Adr222[3] = self.ReadFloat(self.Adr222[0])
+            #self.Adr224[3] = self.ReadFloat(self.Adr224[0])
             self.Adr226[3] = self.ReadFloat(self.Adr226[0])
             self.Adr228[3] = self.ReadFloat(self.Adr228[0])
-            self.Adr230[3] = self.ReadFloat(self.Adr230[0])
-            self.Adr232[3] = self.ReadFloat(self.Adr232[0])
-            self.Adr234[3] = self.ReadFloat(self.Adr234[0])
+            #self.Adr230[3] = self.ReadFloat(self.Adr230[0])
+            #self.Adr232[3] = self.ReadFloat(self.Adr232[0])
+            #self.Adr234[3] = self.ReadFloat(self.Adr234[0])
             self.Adr236[3] = self.ReadFloat(self.Adr236[0])
             self.Adr238[3] = self.ReadFloat(self.Adr238[0])
-            self.Adr240[3] = self.ReadFloat(self.Adr240[0])
-            self.Adr242[3] = self.ReadFloat(self.Adr242[0])
-            self.Adr244[3] = self.ReadFloat(self.Adr244[0])
+            #self.Adr240[3] = self.ReadFloat(self.Adr240[0])
+            #self.Adr242[3] = self.ReadFloat(self.Adr242[0])
+            #self.Adr244[3] = self.ReadFloat(self.Adr244[0])
             self.Adr246[3] = self.ReadFloat(self.Adr246[0])
             self.Adr248[3] = self.ReadFloat(self.Adr248[0])
-            self.Adr250[3] = self.ReadFloat(self.Adr250[0])
-            self.Adr252[3] = self.ReadFloat(self.Adr252[0])
+            #self.Adr250[3] = self.ReadFloat(self.Adr250[0])
+            #self.Adr252[3] = self.ReadFloat(self.Adr252[0])
             self.Adr254[3] = self.ReadFloat(self.Adr254[0])
             self.Adr256[3] = self.ReadFloat(self.Adr256[0])
             self.Adr258[3] = self.ReadFloat(self.Adr258[0])
@@ -696,7 +690,7 @@ class kostal_modbusquery:
             self.KostalRegister.append(self.Adr106)
             self.KostalRegister.append(self.Adr108)
             self.KostalRegister.append(self.Adr110)
-            self.KostalRegister.append(self.Adr112)
+            #self.KostalRegister.append(self.Adr112)
             self.KostalRegister.append(self.Adr114)
             self.KostalRegister.append(self.Adr116)
             self.KostalRegister.append(self.Adr118)
@@ -728,22 +722,22 @@ class kostal_modbusquery:
             self.KostalRegister.append(self.Adr216)
             self.KostalRegister.append(self.Adr218)
             self.KostalRegister.append(self.Adr220)
-            self.KostalRegister.append(self.Adr222)
-            self.KostalRegister.append(self.Adr224)
+            #self.KostalRegister.append(self.Adr222)
+            #self.KostalRegister.append(self.Adr224)
             self.KostalRegister.append(self.Adr226)
             self.KostalRegister.append(self.Adr228)
-            self.KostalRegister.append(self.Adr230)
-            self.KostalRegister.append(self.Adr232)
-            self.KostalRegister.append(self.Adr234)
+            #self.KostalRegister.append(self.Adr230)
+            #self.KostalRegister.append(self.Adr232)
+            #self.KostalRegister.append(self.Adr234)
             self.KostalRegister.append(self.Adr236)
             self.KostalRegister.append(self.Adr238)
-            self.KostalRegister.append(self.Adr240)
-            self.KostalRegister.append(self.Adr242)
-            self.KostalRegister.append(self.Adr244)
+            #self.KostalRegister.append(self.Adr240)
+            #self.KostalRegister.append(self.Adr242)
+            #self.KostalRegister.append(self.Adr244)
             self.KostalRegister.append(self.Adr246)
             self.KostalRegister.append(self.Adr248)
-            self.KostalRegister.append(self.Adr250)
-            self.KostalRegister.append(self.Adr252)
+            #self.KostalRegister.append(self.Adr250)
+            #self.KostalRegister.append(self.Adr252)
             self.KostalRegister.append(self.Adr254)
             self.KostalRegister.append(self.Adr256)
             self.KostalRegister.append(self.Adr258)
@@ -767,25 +761,23 @@ class kostal_modbusquery:
             self.client.close()
             
             # smartmeter
+            #dbusservice['grid']['/Ac/Power'] =  self.Adr252[3]
+            #
+            #dbusservice['grid']['/Ac/L1/Current'] = self.Adr222[3]
+            #dbusservice['grid']['/Ac/L2/Current'] = self.Adr232[3]
+            #dbusservice['grid']['/Ac/L3/Current'] = self.Adr242[3]
+            #
+            #dbusservice['grid']['/Ac/L1/Voltage'] = self.Adr230[3]
+            #dbusservice['grid']['/Ac/L2/Voltage'] = self.Adr240[3]
+            #dbusservice['grid']['/Ac/L3/Voltage'] = self.Adr250[3]
+            #
+            #dbusservice['grid']['/Ac/L1/Power'] = self.Adr224[3]
+            #dbusservice['grid']['/Ac/L2/Power'] = self.Adr234[3]
+            #dbusservice['grid']['/Ac/L3/Power'] = self.Adr244[3]
+            #
+            #dbusservice['grid']['/Ac/Energy/Forward'] = self.Adr112[3]/1000.0
             
-            dbusservice['grid']['/Ac/Power'] =  self.Adr252[3]
-
-            dbusservice['grid']['/Ac/L1/Current'] = self.Adr222[3]
-            dbusservice['grid']['/Ac/L2/Current'] = self.Adr232[3]
-            dbusservice['grid']['/Ac/L3/Current'] = self.Adr242[3]
-            
-            dbusservice['grid']['/Ac/L1/Voltage'] = self.Adr230[3]
-            dbusservice['grid']['/Ac/L2/Voltage'] = self.Adr240[3]
-            dbusservice['grid']['/Ac/L3/Voltage'] = self.Adr250[3]
-            
-            dbusservice['grid']['/Ac/L1/Power'] = self.Adr224[3]
-            dbusservice['grid']['/Ac/L2/Power'] = self.Adr234[3]
-            dbusservice['grid']['/Ac/L3/Power'] = self.Adr244[3]
-            
-            dbusservice['grid']['/Ac/Energy/Forward'] = self.Adr112[3]/1000.0
-            
-            #pv inverter          
-            
+            # pv inverter
             dbusservice['pvinverter.pv0']['/Ac/L1/Current'] = self.Adr154[3]
             dbusservice['pvinverter.pv0']['/Ac/L2/Current'] = self.Adr160[3]
             dbusservice['pvinverter.pv0']['/Ac/L3/Current'] = self.Adr166[3]
@@ -797,8 +789,7 @@ class kostal_modbusquery:
             dbusservice['pvinverter.pv0']['/Ac/L1/Power'] = self.Adr156[3]
             dbusservice['pvinverter.pv0']['/Ac/L2/Power'] = self.Adr162[3]
             dbusservice['pvinverter.pv0']['/Ac/L3/Power'] = self.Adr168[3]
-            
-            
+                       
             dbusservice['pvinverter.pv0']['/Ac/Energy/Forward'] = self.Adr320[3]/1000.0
             dbusservice['pvinverter.pv0']['/Ac/L1/Energy/Forward'] = self.Adr320[3]/3000.0
             dbusservice['pvinverter.pv0']['/Ac/L2/Energy/Forward'] = self.Adr320[3]/3000.0
@@ -815,7 +806,6 @@ class kostal_modbusquery:
 
 # Here is the bit you need to create multiple new services - try as much as possible timplement the Victron Dbus API requirements.
 
-
 def new_service(base, type, physical, id, instance):
     self = VeDbusService("{}.{}.{}_id{:02d}".format(
         base, type, physical,  id), dbusconnection())
@@ -823,7 +813,7 @@ def new_service(base, type, physical, id, instance):
     # Create the management objects, as specified in the ccgx dbus-api document
     self.add_path('/Mgmt/ProcessName', __file__)
     self.add_path('/Mgmt/ProcessVersion',
-                  'Unkown version, and running on Python ' + platform.python_version())
+                  'Unknown version, and running on Python ' + platform.python_version())
     self.add_path('/Connected', 1)
     self.add_path('/HardwareVersion', 0)
 
@@ -834,33 +824,31 @@ def new_service(base, type, physical, id, instance):
     def _c(p, v): return (str(v) + 'C')
 
  # Create device type specific objects
-    if physical == 'grid':
-        self.add_path('/DeviceInstance', instance)
-        self.add_path('/Serial', "12345678")
-        # value used in ac_sensor_bridge.cpp of dbus-cgwacs
-        self.add_path('/ProductId', 45069)
-        self.add_path(
-            '/ProductName', "SmartMeter")
-        self.add_path('/Ac/Power', None, gettextcallback=_w)
-        self.add_path('/Ac/L1/Voltage', None, gettextcallback=_v)
-        self.add_path('/Ac/L2/Voltage', None, gettextcallback=_v)
-        self.add_path('/Ac/L3/Voltage', None, gettextcallback=_v)
-        self.add_path('/Ac/L1/Current', None, gettextcallback=_a)
-        self.add_path('/Ac/L2/Current', None, gettextcallback=_a)
-        self.add_path('/Ac/L3/Current', None, gettextcallback=_a)
-        self.add_path('/Ac/L1/Power', None, gettextcallback=_w)
-        self.add_path('/Ac/L2/Power', None, gettextcallback=_w)
-        self.add_path('/Ac/L3/Power', None, gettextcallback=_w)
-        # energy bought from the grid
-        self.add_path('/Ac/Energy/Forward', None, gettextcallback=_kwh)
+    #if physical == 'grid':
+    #    self.add_path('/DeviceInstance', instance)
+    #    self.add_path('/Serial', "12345678")
+    #    # value used in ac_sensor_bridge.cpp of dbus-cgwacs
+    #    self.add_path('/ProductId', 45069)
+    #    self.add_path('/ProductName', "SmartMeter")
+    #    self.add_path('/Ac/Power', None, gettextcallback=_w)
+    #    self.add_path('/Ac/L1/Voltage', None, gettextcallback=_v)
+    #    self.add_path('/Ac/L2/Voltage', None, gettextcallback=_v)
+    #    self.add_path('/Ac/L3/Voltage', None, gettextcallback=_v)
+    #    self.add_path('/Ac/L1/Current', None, gettextcallback=_a)
+    #    self.add_path('/Ac/L2/Current', None, gettextcallback=_a)
+    #    self.add_path('/Ac/L3/Current', None, gettextcallback=_a)
+    #    self.add_path('/Ac/L1/Power', None, gettextcallback=_w)
+    #    self.add_path('/Ac/L2/Power', None, gettextcallback=_w)
+    #    self.add_path('/Ac/L3/Power', None, gettextcallback=_w)
+    #    # energy bought from the grid
+    #    self.add_path('/Ac/Energy/Forward', None, gettextcallback=_kwh)
 
     if physical == 'pvinverter':
         self.add_path('/DeviceInstance', instance)
         self.add_path('/FirmwareVersion', "1234")
         # value used in ac_sensor_bridge.cpp of dbus-cgwacs
         self.add_path('/ProductId', 41284)
-        self.add_path(
-            '/ProductName', "Kostal")
+        self.add_path('/ProductName', "Kostal")
         self.add_path('/Ac/Energy/Forward', None, gettextcallback=_kwh)
         self.add_path('/Ac/L1/Energy/Forward', None, gettextcallback=_kwh)
         self.add_path('/Ac/L2/Energy/Forward', None, gettextcallback=_kwh)
@@ -882,7 +870,6 @@ def new_service(base, type, physical, id, instance):
 
     return self
 
-
 def _update():
     try:
         Kostalvalues = []
@@ -890,9 +877,8 @@ def _update():
         Kostalquery.run()
     except Exception as ex:
         print("Issues querying Kostal Plenticore -ERROR :", ex)
-
+    
     return True
-
 
 dbusservice = {}  # Dictonary to hold the multiple services
 
@@ -901,14 +887,13 @@ base = 'com.victronenergy'
 # service defined by (base*, type*, id*, instance):
 # * items are include in service name
 # Create all the dbus-services we want
-dbusservice['grid'] = new_service(
-    base, 'grid',           'grid',              0, 31)
-dbusservice['pvinverter.pv0'] = new_service(
-    base, 'pvinverter.pv0', 'pvinverter',        0, 20)
+#dbusservice['grid'] = new_service(
+#    base, 'grid',           'grid',              0, 31)
+#dbusservice['pvinverter.pv0'] = new_service(
+#    base, 'pvinverter.pv0', 'pvinverter',        0, 20)
 
 # Everything done so just set a time to run an update function to update the data values every 1 second
 gobject.timeout_add(1000, _update)
-
 
 print("Connected to dbus, and switching over to gobject.MainLoop() (= event based)")
 mainloop = gobject.MainLoop()
@@ -916,7 +901,6 @@ mainloop.run()
 
 if __name__ == "__main__":
     try:
-
         Kostalquery = kostal_modbusquery()
         Kostalquery.run()
     except Exception as ex:
