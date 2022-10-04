@@ -811,6 +811,8 @@ def new_service(base, type, physical, id, instance):
         base, type, physical,  id), dbusconnection())
 
     # Create the management objects, as specified in the ccgx dbus-api document
+    # Supported paths:
+    # https://github.com/victronenergy/venus/wiki/dbus#generic-paths
     self.add_path('/Mgmt/ProcessName', __file__)
     self.add_path('/Mgmt/ProcessVersion',
                   'Unknown version, and running on Python ' + platform.python_version())
@@ -844,6 +846,8 @@ def new_service(base, type, physical, id, instance):
     #    self.add_path('/Ac/Energy/Forward', None, gettextcallback=_kwh)
 
     if physical == 'pvinverter':
+        # Supported paths:
+        # https://github.com/victronenergy/venus/wiki/dbus#pv-inverters
         self.add_path('/DeviceInstance', instance)
         self.add_path('/FirmwareVersion', "1234")
         # value used in ac_sensor_bridge.cpp of dbus-cgwacs
