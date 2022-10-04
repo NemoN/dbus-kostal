@@ -889,8 +889,8 @@ base = 'com.victronenergy'
 # Create all the dbus-services we want
 #dbusservice['grid'] = new_service(
 #    base, 'grid',           'grid',              0, 31)
-#dbusservice['pvinverter.pv0'] = new_service(
-#    base, 'pvinverter.pv0', 'pvinverter',        0, 20)
+dbusservice['pvinverter.pv0'] = new_service(
+    base, 'pvinverter.pv0', 'pvinverter',        0, 20)
 
 # Everything done so just set a time to run an update function to update the data values every 1 second
 gobject.timeout_add(1000, _update)
